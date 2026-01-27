@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HorarioGo - Organize Your School Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-dark: #5a52d5;
+            --text-dark: #2D2D2D;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --bg-light: #F9F9FB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        nav {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            padding: 50px 0;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Placeholder graphic using CSS shapes since we don't have images yet */
+        .app-mockup {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f5 100%);
+            border-radius: 40px;
+            border: 8px solid #333;
+            box-shadow: 0 25px 50px -12px rgba(108, 99, 255, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-header {
+            height: 60px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .mockup-body {
+            padding: 20px;
+        }
+
+        .mockup-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+        }
+
+        .mockup-card div:first-child {
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .mockup-card div:last-child {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        h1 span {
+            color: var(--primary);
+        }
+
+        p.subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -10px rgba(108, 99, 255, 0.5);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -10px rgba(108, 99, 255, 0.6);
+            background-color: var(--primary-dark);
+        }
+
+        .features {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border-radius: 20px;
+            background-color: var(--bg-light);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            padding: 40px 0;
+            background-color: #f9f9fb;
+            text-align: center;
+            color: var(--text-light);
+            border-top: 1px solid #eee;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 20px;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+
+            p.subtitle {
+                margin: 0 auto 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Navbar -->
+        <nav>
+            <div class="logo">Horario<span style="color: var(--text-dark)">Go</span></div>
+            <a href="privacy.html"
+                style="text-decoration: none; color: var(--text-light); font-weight: 500;">Privacy</a>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Simplify your <br><span>School Life</span></h1>
+                <p class="subtitle">
+                    The easiest way to manage your class schedule, homework, and exams. Sync seamlessly with Google
+                    Calendar.
+                </p>
+                <div class="buttons">
+                    <a href="privacy.html" class="btn">View Privacy Policy</a>
+                    <a href="terms.html" class="btn btn-secondary"
+                        style="background-color: white; color: var(--primary); border: 2px solid var(--primary); margin-left: 10px;">Terms
+                        & Conditions</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <!-- CSS Mockup of the App -->
+                <div class="app-mockup">
+                    <div class="mockup-header">HorarioGo</div>
+                    <div class="mockup-body">
+                        <div class="mockup-card">
+                            <div>Matemáticas</div>
+                            <div>8:00 AM - 9:30 AM • Room A1</div>
+                        </div>
+                        <div class="mockup-card" style="border-left-color: #FF6B6B;">
+                            <div>Física</div>
+                            <div>10:00 AM - 11:30 AM • Room B2</div>
+                        </div>
+                        <div class="mockup-card" style="border-left-color: #4ECDC4;">
+                            <div>Programación</div>
+                            <div>12:00 PM - 2:00 PM • Lab 3</div>
+                        </div>
+                        <div class="mockup-card" style="border-left-color: #FFE66D;">
+                            <div>Historia</div>
+                            <div>2:00 PM - 3:00 PM • Room C1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2rem;">Why HorarioGo?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <div class="feature-title">Smart Scheduling</div>
+                    <p>Organize your classes, exams, and homework in one beautiful, easy-to-use interface.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title">Google Sync</div>
+                    <p>Automatically sync your school schedule with Google Calendar so you never miss a class.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <div class="feature-title">Reminders</div>
+                    <p>Get notified before classes start and when assignments are due.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 HorarioGo. All rights reserved.</p>
+            <div class="footer-links" style="margin-top: 10px;">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
